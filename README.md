@@ -15,6 +15,7 @@ Then we will create a new folder and name api
     Inside the api make a python file named '__init__.py' and views.py
 
 In views.py:
+    
     from rest_framework.response import Response
     from rest_framework.decorators import api_view
     
@@ -32,6 +33,7 @@ Then create a new file named urls.py:
     ]
 
 In Projects urls.py append include along with path and append:
+   
     path('',include('api.urls')),
 
 
@@ -40,6 +42,7 @@ Then You may run the server and see if it works !!
 
 In the app created
 Go to models.py:
+    
     class Item(models.Model):
         name = models.CharField(max_length=200)
         created = models.DateTimeField(auto_now_add=True)
@@ -48,12 +51,14 @@ Then you can make migrations with python manage.py makemigrations
 and migrate with python manage.py migrate
 
 TO ADD some data manually you can:
+    
     python manage.py shell
     >> from <name>.models import Item
     >> Item.objects.create(name="Item #1")
     >> exit()
 
 create new folder 'serializers.py' in the api folder:
+    
     from rest_framework import serializers
     from base.models import Item
     class ItemSerializer(serializers.ModelSerializer):
@@ -64,6 +69,7 @@ create new folder 'serializers.py' in the api folder:
 
 
 open views.py on api folder and append:
+    
     from base.models import Item
     from .serializers import ItemSerializer
     #change the following as:
@@ -83,6 +89,7 @@ open views.py on api folder and append:
 
 
 add in urls.py of api:
+   
     path('add/',views.addItem)
 
 AGAIN CHECK WITH /add
